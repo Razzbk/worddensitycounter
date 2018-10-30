@@ -1,5 +1,5 @@
 '''
-Count word density and all words in text.
+Count word density and all words in uploaded text.
 '''
 from string import punctuation as punct
 
