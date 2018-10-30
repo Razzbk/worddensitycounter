@@ -1,0 +1,24 @@
+'''
+Count word density and all words in text.
+'''
+from string import punctuation as punct
+
+strip_punct=lambda s: ''.join(c for c in s if c not in punct)
+
+phrase = input("Enter a sentence:")
+
+allWords=[strip_punct(word).strip() for word in (phrase.upper().split())]
+
+wordCount={word:allWords.count(word) for word in set(allWords)}
+
+wordLen=[len(word) for word in set(allWords)]
+
+total=len(allWords)
+
+print(phrase,'\n')
+
+print('In order of count: (Total: {} words)'.format(total))
+[print('{:<{width}}: {}   ({:5.2f}%)'.format(word,wordCount[word],(100*wordCount[word]/total),width=max(wordLen)+1)) for word in sorted(wordCount,key=wordCount.__getitem__,reverse=True)]
+
+print('\nIn alphabetic order:')
+[print('{:<{width}}: {} '.format(word,wordCount[word],width=max(wordLen)+1)) for word in sorted(wordCount)]
